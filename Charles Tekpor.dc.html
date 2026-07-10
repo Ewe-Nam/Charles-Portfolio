@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#060913;color:#c3cede;font-family:'Space Grotesk',system-ui,sans-serif}
+  a{color:#22d3ee}
+  a:hover{color:#67e8f9}
+  ::selection{background:rgba(34,211,238,.3);color:#eaf2ff}
+  @keyframes gridpan{0%{background-position:0 0}100%{background-position:44px 44px}}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @keyframes glitch{0%,100%{transform:translate(0);clip-path:inset(0 0 0 0)}20%{transform:translate(-2px,1px);clip-path:inset(20% 0 40% 0)}40%{transform:translate(2px,-1px);clip-path:inset(60% 0 10% 0)}60%{transform:translate(-1px,0);clip-path:inset(10% 0 70% 0)}80%{transform:translate(1px,1px);clip-path:inset(45% 0 35% 0)}}
+  @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+  @keyframes fadeup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  .reveal{animation:fadeup .7s cubic-bezier(.2,.7,.3,1) both}
+</style>
+</helmet>
+
+<div style="position:relative;overflow:hidden;min-height:100vh">
+  <div style="height:0;width:0;overflow:hidden;position:absolute"><x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="1px,1px"></x-import></div>
+  <!-- animated grid + glows -->
+  <div style="position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(120% 80% at 82% -8%,#0d1830 0,#060913 55%)"></div>
+  <div style="position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;background-image:linear-gradient(rgba(34,211,238,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(34,211,238,.08) 1px,transparent 1px);background-size:44px 44px;animation:gridpan 16s linear infinite"></div>
+  <div style="position:fixed;top:-160px;left:-120px;width:520px;height:520px;pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(244,114,182,.14),transparent 70%);filter:blur(20px)"></div>
+
+  <!-- ===== NAV ===== -->
+  <nav style="position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;backdrop-filter:blur(10px);background:rgba(6,9,19,.72);border-bottom:1px solid rgba(34,211,238,.14)">
+    <a href="#top" style="text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:.28em;color:#22d3ee;font-weight:600">// CT.SEC</a>
+    <div style="display:flex;gap:26px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:#7f95b3">
+      <a href="#about" style="text-decoration:none;color:inherit" style-hover="color:#eaf2ff">ABOUT</a>
+      <a href="#skills" style="text-decoration:none;color:inherit" style-hover="color:#eaf2ff">SKILLS</a>
+      <a href="#work" style="text-decoration:none;color:inherit" style-hover="color:#eaf2ff">WORK</a>
+      <a href="#roadmap" style="text-decoration:none;color:inherit" style-hover="color:#eaf2ff">ROADMAP</a>
+      <a href="#contact" style="text-decoration:none;color:#f472b6" style-hover="color:#f9a8d4">CONTACT</a>
+    </div>
+  </nav>
+
+  <div id="top" style="position:relative;z-index:10;max-width:1080px;margin:0 auto;padding:0 40px 80px">
+
+    <!-- ===== HERO ===== -->
+    <header style="padding:96px 0 70px">
+      <div class="reveal" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.3em;color:#f472b6;margin-bottom:20px">STATUS: LEVELLING UP → CLOUD SECURITY</div>
+      <h1 class="reveal" style="margin:0;font-size:88px;line-height:.94;font-weight:700;letter-spacing:-.03em;color:#eaf2ff;text-shadow:0 0 34px rgba(34,211,238,.4);animation-delay:.06s" style-hover="animation:glitch .4s steps(2) 2">Charles<br>Tekpor</h1>
+      <p class="reveal" style="margin:26px 0 0;max-width:600px;font-size:20px;line-height:1.6;color:#9fb2cc;animation-delay:.12s">Cybersecurity enthusiast turning hands-on offensive work into cloud defense — securing infrastructure across <span style="color:#22d3ee">AWS</span>, <span style="color:#22d3ee">Azure</span> &amp; <span style="color:#22d3ee">GCP</span>.</p>
+      <div class="reveal" style="display:flex;gap:14px;margin-top:32px;animation-delay:.18s">
+        <a href="#contact" style="text-decoration:none;font-weight:600;font-size:15px;color:#060913;background:linear-gradient(90deg,#22d3ee,#38bdf8);padding:14px 26px;border-radius:9px;box-shadow:0 0 26px rgba(34,211,238,.4)" style-hover="box-shadow:0 0 44px rgba(34,211,238,.75)">Get in touch</a>
+        <a href="#work" style="text-decoration:none;font-weight:600;font-size:15px;color:#f472b6;border:1px solid #f472b6;padding:14px 26px;border-radius:9px" style-hover="background:rgba(244,114,182,.12)">View the lab ↓</a>
+      </div>
+      <div class="reveal" style="display:flex;gap:14px;margin-top:44px;animation-delay:.24s">
+        <sc-for list="{{ stats }}" as="st" hint-placeholder-count="3">
+          <div style="flex:1;border:1px solid #16233f;border-radius:12px;background:rgba(10,18,36,.6);backdrop-filter:blur(6px);padding:18px 20px">
+            <div style="font-size:34px;font-weight:700;color:#22d3ee">{{ st.v }}</div>
+            <div style="font-size:12.5px;color:#7f95b3;letter-spacing:.03em">{{ st.k }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </header>
+
+    <!-- ===== VISUAL BAND ===== -->
+    <section style="padding:14px 0 30px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+        <div style="position:relative;height:280px;border-radius:14px;overflow:hidden;border:1px solid #16233f;box-shadow:0 0 30px rgba(34,211,238,.08)">
+          <image-slot id="img-cyber" shape="rect" fit="cover" placeholder="Drop a cybersecurity image" src="./profile.png" style="width:100%;height:100%"></image-slot>
+          <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 55%,rgba(6,9,19,.85))"></div>
+          <div style="position:absolute;left:16px;top:14px;pointer-events:none;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;color:#22d3ee;background:rgba(6,9,19,.6);padding:4px 9px;border-radius:5px;border:1px solid rgba(34,211,238,.3)">OFFENSIVE SECURITY</div>
+        </div>
+        <div style="position:relative;height:280px;border-radius:14px;overflow:hidden;border:1px solid #2e1e33;box-shadow:0 0 30px rgba(244,114,182,.08)">
+          <image-slot id="img-cloud" shape="rect" fit="cover" placeholder="Drop a cloud security image" style="width:100%;height:100%"></image-slot>
+          <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 55%,rgba(6,9,19,.85))"></div>
+          <div style="position:absolute;left:16px;top:14px;pointer-events:none;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;color:#f472b6;background:rgba(6,9,19,.6);padding:4px 9px;border-radius:5px;border:1px solid rgba(244,114,182,.3)">CLOUD SECURITY</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" style="padding:44px 0;scroll-margin-top:80px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.24em;color:#22d3ee;margin-bottom:22px">▚ 01 · ABOUT</div>
+      <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:start">
+        <p style="margin:0;font-size:19px;line-height:1.75;color:#b6c2d4">I break things to understand how they hold together. My path starts with network fundamentals and hands-on virtualization, moving deliberately toward cloud security — from the packet up to the control plane. I learn by building: standing up labs, attacking them, and understanding exactly why they broke. The goal is simple — own the security of cloud infrastructure end to end.</p>
+        <div style="border:1px solid #16233f;border-radius:12px;background:rgba(10,18,36,.55);backdrop-filter:blur(6px);padding:22px 24px;font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:2;color:#9fb2cc">
+          <div><span style="color:#5b7391">focus &nbsp;</span> <span style="color:#22d3ee">Cloud security</span></div>
+          <div><span style="color:#5b7391">clouds &nbsp;</span> AWS · Azure · GCP</div>
+          <div><span style="color:#5b7391">based &nbsp;&nbsp;</span> Accra, Ghana</div>
+          <div><span style="color:#5b7391">status &nbsp;</span> <span style="color:#4ade80">open to opportunities</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS + CERTS ===== -->
+    <section id="skills" style="padding:44px 0;scroll-margin-top:80px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.24em;color:#22d3ee;margin-bottom:22px">▚ 02 · SKILLS &amp; CERTIFICATIONS</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+        <div style="border:1px solid #16233f;border-radius:14px;background:rgba(10,18,36,.55);backdrop-filter:blur(6px);padding:26px 28px">
+          <h3 style="margin:0 0 18px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;color:#22d3ee">TECHNICAL SKILLS</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <sc-for list="{{ skills }}" as="s" hint-placeholder-count="10">
+              <span style="font-size:13.5px;padding:7px 13px;border-radius:20px;background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.25);color:#bfe9f4" style-hover="background:rgba(34,211,238,.18);border-color:#22d3ee">{{ s }}</span>
+            </sc-for>
+          </div>
+        </div>
+        <div style="border:1px solid #16233f;border-radius:14px;background:rgba(10,18,36,.55);backdrop-filter:blur(6px);padding:26px 28px">
+          <h3 style="margin:0 0 18px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;color:#f472b6">CERTIFICATIONS</h3>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <sc-for list="{{ certs }}" as="c" hint-placeholder-count="4">
+              <div style="display:flex;align-items:center;gap:12px">
+                <span style="font-size:10px;font-weight:700;padding:4px 8px;border-radius:5px;background:{{ c.bg }};color:{{ c.fg }};white-space:nowrap">{{ c.tag }}</span>
+                <span style="font-size:14.5px;color:#d3ddec">{{ c.name }}</span>
+                <span style="margin-left:auto;font-size:12px;color:#5b7391;font-family:'IBM Plex Mono',monospace">{{ c.org }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WORK ===== -->
+    <section id="work" style="padding:44px 0;scroll-margin-top:80px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.24em;color:#22d3ee;margin-bottom:22px">▚ 03 · SELECTED WORK</div>
+      <div style="border:1px solid rgba(34,211,238,.3);border-radius:16px;background:linear-gradient(120deg,rgba(34,211,238,.06),rgba(244,114,182,.05));padding:34px 36px;position:relative;overflow:hidden" style-hover="border-color:#22d3ee">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.26em;color:#f472b6;margin-bottom:10px">FEATURED PROJECT</div>
+        <h3 style="margin:0 0 16px;font-size:30px;font-weight:700;color:#eaf2ff;letter-spacing:-.01em">VMware Pentest &amp; Performance Lab</h3>
+        <div style="height:300px;border-radius:12px;overflow:hidden;border:1px solid rgba(34,211,238,.25);margin-bottom:22px">
+          <image-slot id="img-lab" shape="rect" fit="contain" placeholder="Drop a lab / network topology screenshot" src="./topology.jpg" style="width:100%;height:100%"></image-slot>
+        </div>
+        <p style="margin:0 0 22px;max-width:760px;font-size:16px;line-height:1.75;color:#9fb2cc">A self-hosted virtual range for offensive testing and performance analysis. I built isolated networks with routed segments using GNS3 and a VyOS router, deployed deliberately vulnerable targets and a Kali attack box, then documented the full recon-to-post-exploitation chain — while benchmarking VM resource behavior under load.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:24px">
+          <sc-for list="{{ labHighlights }}" as="h" hint-placeholder-count="3">
+            <div style="border-left:2px solid rgba(34,211,238,.4);padding-left:14px">
+              <div style="font-size:13px;font-weight:600;color:#22d3ee;margin-bottom:4px">{{ h.k }}</div>
+              <div style="font-size:13.5px;line-height:1.55;color:#8ea0ba">{{ h.v }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:9px">
+          <sc-for list="{{ labStack }}" as="t" hint-placeholder-count="7">
+            <span style="font-size:12.5px;color:#22d3ee;border:1px solid rgba(34,211,238,.3);border-radius:16px;padding:5px 12px">{{ t }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ROADMAP ===== -->
+    <section id="roadmap" style="padding:44px 0;scroll-margin-top:80px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.24em;color:#22d3ee;margin-bottom:28px">▚ 04 · ROADMAP → CLOUD SECURITY ENGINEER</div>
+      <div style="display:flex;gap:0;align-items:stretch">
+        <sc-for list="{{ roadmap }}" as="r" hint-placeholder-count="5">
+          <div style="flex:1;position:relative;padding:0 8px">
+            <div style="height:2px;background:linear-gradient(90deg,#1c3050,#22d3ee);margin:0 -8px 16px"></div>
+            <span style="position:absolute;top:-5px;left:calc(50% - 6px);width:12px;height:12px;border-radius:50%;background:{{ r.dot }};box-shadow:0 0 12px {{ r.dot }}"></span>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6f89aa;margin-bottom:6px">{{ r.when }}</div>
+            <div style="font-size:15px;color:#dbe6f4;font-weight:600;line-height:1.35">{{ r.title }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" style="padding:60px 0 30px;scroll-margin-top:80px">
+      <div style="border:1px solid #16233f;border-radius:18px;background:rgba(10,18,36,.6);backdrop-filter:blur(8px);padding:48px 44px;text-align:center;position:relative;overflow:hidden">
+        <div style="position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:440px;height:280px;background:radial-gradient(circle,rgba(34,211,238,.16),transparent 70%);filter:blur(10px);pointer-events:none"></div>
+        <div style="position:relative">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.24em;color:#f472b6;margin-bottom:14px">▚ 05 · CONTACT</div>
+          <h2 style="margin:0 0 12px;font-size:40px;font-weight:700;color:#eaf2ff;letter-spacing:-.02em">Let's build something secure.</h2>
+          <p style="margin:0 auto 28px;max-width:520px;font-size:16px;line-height:1.6;color:#9fb2cc">Open to internships, junior cloud security roles, and collaboration with the security community.</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+            <a href="mailto:hello@charlestekpor.dev" style="text-decoration:none;font-weight:600;font-size:15px;color:#060913;background:linear-gradient(90deg,#22d3ee,#38bdf8);padding:14px 26px;border-radius:9px;box-shadow:0 0 26px rgba(34,211,238,.4)" style-hover="box-shadow:0 0 44px rgba(34,211,238,.75)">hello@charlestekpor.dev</a>
+            <a href="#" style="text-decoration:none;font-weight:600;font-size:15px;color:#c3cede;border:1px solid #2a3a58;padding:14px 22px;border-radius:9px" style-hover="border-color:#22d3ee;color:#22d3ee">GitHub</a>
+            <a href="#" style="text-decoration:none;font-weight:600;font-size:15px;color:#c3cede;border:1px solid #2a3a58;padding:14px 22px;border-radius:9px" style-hover="border-color:#22d3ee;color:#22d3ee">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:30px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4a5b74">
+        <span>© 2026 Charles Tekpor</span>
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80"></span>available for work<span style="display:inline-block;width:8px;height:15px;background:#22d3ee;animation:blink 1.1s step-end infinite"></span></span>
+      </div>
+    </section>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1160,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    const skills = ['System administration','Network engineering','Network fundamentals','Linux / Bash','VMware virtualization','GNS3','VyOS routing','Penetration testing','Vulnerability analysis','Nmap','Metasploit','Wireshark','Python','AWS · Azure · GCP'];
+    const done = { tag:'DONE', bg:'rgba(74,222,128,.15)', fg:'#4ade80' };
+    const wip = { tag:'IN PROGRESS', bg:'rgba(251,191,36,.15)', fg:'#fbbf24' };
+    const planned = { tag:'PLANNED', bg:'rgba(148,163,184,.15)', fg:'#94a3b8' };
+    const certs = [
+      { name:'Networking Basics', org:'Cisco', ...done },
+      { name:'CompTIA Security+', org:'CompTIA', ...wip },
+      { name:'AWS Certified Security – Specialty', org:'Amazon', ...planned },
+      { name:'CCSP', org:'ISC²', ...planned },
+    ];
+    const roadmap = [
+      { title:'Network & Linux fundamentals', when:'NOW', dot:'#4ade80' },
+      { title:'CompTIA Security+', when:'2026', dot:'#fbbf24' },
+      { title:'Cloud practitioner foundations', when:'2026', dot:'#38bdf8' },
+      { title:'AWS Security – Specialty', when:'2027', dot:'#a78bfa' },
+      { title:'Cloud Security Engineer', when:'GOAL', dot:'#f472b6' },
+    ];
+    const stats = [
+      { v:'4+', k:'certifications in flight' },
+      { v:'3', k:'clouds targeted' },
+      { v:'1', k:'home lab, always on' },
+    ];
+    const labHighlights = [
+      { k:'NETWORK DESIGN', v:'Routed, segmented topology built in GNS3 with a VyOS edge router.' },
+      { k:'OFFENSIVE CHAIN', v:'Recon → exploitation → post-exploitation, fully documented.' },
+      { k:'PERFORMANCE', v:'Benchmarked VM CPU, memory & I/O behavior under load.' },
+    ];
+    const labStack = ['VMware','GNS3','VyOS Router','Kali Linux','Nmap','Metasploit','Wireshark'];
+    return { skills, certs, roadmap, stats, labHighlights, labStack };
+  }
+}
+</script>
+</body>
+</html>
